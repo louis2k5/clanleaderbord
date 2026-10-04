@@ -1,0 +1,66 @@
+# ==============================================================================
+# ClanSystem configuration
+# ==============================================================================
+
+# Prefix for all plugin messages ('&' colour codes)
+prefix: "&8[&bClan&8] &7"
+
+limits:
+  name-min: 3          # clan name length (max 10 as requested)
+  name-max: 10
+  tag-min: 2           # clan tag length (max 4 as requested)
+  tag-max: 4
+  max-members: 20
+  blocked-words: []    # names/tags containing one of these words are rejected
+
+tag:
+  uppercase: false           # force tags to upper case when they are created/changed
+  bracket-color: DARK_GRAY   # colour of the [ ] around the tag (Minecraft colour name)
+
+invites:
+  expire-seconds: 300
+
+# false = members of the same clan cannot damage each other
+friendly-fire: true
+
+peace:
+  # true = peace can only be made between members of the same clan
+  same-clan-only: true
+  request-seconds: 60
+
+# Broadcast a message to the whole server when a clan is created
+announce-creation: true
+
+display:
+  tablist: true            # show the tag in the tab list
+  nametag: true            # show the tag above the head (uses scoreboard teams named cs_xxxx; skipped for
+                           # players that are already in a team of another plugin)
+  # How the tag is shown in chat:
+  #   RENDERER    = ClanSystem formats the chat line ("[TAG] Name: message")
+  #   DISPLAYNAME = the tag is put in front of the player's display name (use this if another chat plugin formats chat)
+  #   OFF         = no tag in chat
+  chat: RENDERER
+
+clan-chat:
+  prefix: "&8[&bClan Chat&8] "
+
+# Animated RGB tag perks
+animation:
+  interval-ticks: 2        # update interval (2 = 10 updates per second)
+  gradient:
+    speed: 0.25            # how many full colour cycles per second
+    spread: 1.0            # how much of the colour spectrum is spread over the tag letters
+  breathing:
+    hue-speed: 0.05        # how fast the base colour moves through the spectrum (cycles per second)
+    pulse-seconds: 3.0     # length of one breath (fade in + fade out)
+    min-brightness: 0.35   # darkest point of the breath (0.0 - 1.0)
+
+# Integration into the PerkSystem menu (/perks)
+perks-integration:
+  enabled: true
+  # Free slots in the first page of the perk menu. The PerkSystem menu reserves 14 perk slots and currently
+  # uses 12, so slots 33 and 34 are free. The status icon is placed 9 slots below.
+  slots: [33, 34]
+
+voucher:
+  item: "PAPER"

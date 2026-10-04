@@ -1,0 +1,115 @@
+name: ClanSystem
+version: '1.0.0'
+main: org.bcp.clansystem.ClanSystem
+api-version: '1.21'
+description: Clans with roles, private clan chat, colored tags and animated RGB tag perks (PerkSystem compatible).
+softdepend: [PerkSystem, LuckPerms]
+
+commands:
+  clan:
+    description: Clan command. Use /clan help.
+    usage: /clan help
+    aliases: [clans]
+  cc:
+    description: Private clan chat. Without a message it toggles clan chat mode.
+    usage: /cc [message]
+
+permissions:
+  clan.create:
+    description: Create a clan (/clan create)
+    default: true
+  clan.delete:
+    description: Delete a clan (/clan delete) - additionally only the clan leader may do it
+    default: true
+  clan.change:
+    description: Change clan name or tag (/clan change) - additionally Leader and Co-Leader only
+    default: true
+  clan.info:
+    description: Show clan info (/clan info)
+    default: true
+  clan.invite:
+    description: Invite players (/clan invite) - additionally Moderator and higher only
+    default: true
+  clan.accept:
+    description: Accept a clan invite (/clan accept)
+    default: true
+  clan.decline:
+    description: Decline a clan invite (/clan decline)
+    default: true
+  clan.promote:
+    description: Promote clan members (/clan promote) - additionally Leader and Co-Leader only
+    default: true
+  clan.demote:
+    description: Demote clan members (/clan demote) - additionally Leader and Co-Leader only
+    default: true
+  clan.kick:
+    description: Kick clan members (/clan kick) - additionally Leader and Co-Leader only
+    default: true
+  clan.leave:
+    description: Leave your clan (/clan leave)
+    default: true
+  clan.chat:
+    description: Use the private clan chat (/clan chat, /cc)
+    default: true
+  clan.peace:
+    description: Make peace with other players (/clan peace)
+    default: true
+  clan.color:
+    description: Open the tag color GUI (/clan color) - additionally only the clan leader may use it
+    default: true
+  clan.rgb:
+    description: Toggle the animated RGB tag perks (/clan rgb) - the perks themselves need perks.clan_gradient / perks.clan_breathing
+    default: true
+
+  clan.color.red:
+    description: Allows the red clan tag color
+    default: false
+  clan.color.orange:
+    description: Allows the orange clan tag color
+    default: false
+  clan.color.yellow:
+    description: Allows the yellow clan tag color
+    default: false
+  clan.color.green:
+    description: Allows the green clan tag color
+    default: false
+  clan.color.cyan:
+    description: Allows the cyan clan tag color
+    default: false
+  clan.color.blue:
+    description: Allows the blue clan tag color
+    default: false
+  clan.color.purple:
+    description: Allows the purple clan tag color
+    default: false
+  clan.color.*:
+    description: Allows all clan tag colors
+    default: false
+    children:
+      clan.color.red: true
+      clan.color.orange: true
+      clan.color.yellow: true
+      clan.color.green: true
+      clan.color.cyan: true
+      clan.color.blue: true
+      clan.color.purple: true
+
+  perks.clan_gradient:
+    description: Perk - flowing RGB gradient on your clan tag (PerkSystem compatible)
+    default: false
+  perks.clan_breathing:
+    description: Perk - breathing RGB on your clan tag (PerkSystem compatible)
+    default: false
+
+  clan.admin.reload:
+    description: Reload the configuration (/clan reload)
+    default: op
+  clan.admin.voucher:
+    description: Create perk vouchers for the two clan tag perks (/clan perkvoucher)
+    default: op
+  clan.admin:
+    description: Admin access - delete any clan and use all admin commands
+    default: op
+    children:
+      clan.admin.reload: true
+      clan.admin.voucher: true
